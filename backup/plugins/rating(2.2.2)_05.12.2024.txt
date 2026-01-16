@@ -1,0 +1,74 @@
+listingDetailsAfterStats
+
+            global $config;
+            if ( $config['rating_module'] )
+            {
+                $GLOBALS['rlSmarty'] -> display(RL_ROOT . 'plugins' . RL_DS . 'rating' . RL_DS . 'listing_details.tpl');
+            }
+        
+
+listingBeforeStats
+
+            global $config;
+
+            $listing = $GLOBALS['rlSmarty']->get_template_vars('listing');
+
+            if ($config['rating_module'] && $listing['lr_rating']) {
+                $GLOBALS['rlSmarty'] -> display(RL_ROOT . 'plugins' . RL_DS . 'rating' . RL_DS . 'listing.tpl');
+            }
+        
+
+tplHeader
+
+            echo '<link href="'.RL_PLUGINS_URL.'rating/static/style.css" type="text/css" rel="stylesheet" />';
+        
+
+listingDetailsBottom
+
+            global $rlXajax, $config, $listing_data, $account_info;
+
+            if ( $config['rating_module'] )
+            {
+                if ( !$config['rating_prevent_owner'] || ($config['rating_prevent_owner'] && $config['rating_prevent_owner'] && $listing_data['Account_ID'] != $account_info['ID']) )
+                {
+                    $GLOBALS['reefless'] -> loadClass('Rating', null, 'rating');
+                    $rlXajax -> registerFunction( array( 'rate', $GLOBALS['rlRating'], 'ajaxRate' ) );
+                }
+
+                global $listing_data;
+                $GLOBALS['rlSmarty'] -> assign_by_ref('listing_data', $listing_data);
+
+                $voted = explode(',', $_COOKIE['rating']);
+                if ( in_array( $listing_data['ID'], $voted ) )
+                {
+                    $GLOBALS['rlSmarty'] -> assign('rating_denied', 'true');
+                }
+            }
+        
+
+apExtListingsDataMiddle
+
+            global $config, $lang, $value, $fields_html;
+            if ($config['rating_module']) {
+                $average_rating = $lang['not_available'];
+                if ($value['lr_rating'] && $value['lr_rating_votes']) {
+                    $average_rating = round($value['lr_rating'] / $value['lr_rating_votes'], 1) . '/' . $config['rating_stars_number'];
+                }
+                $fields_html .= '<tr><td style="padding: 0 5px 4px;">'. $lang['rating_rating'] .':</td><td><b>'. $average_rating .'</b></td></tr>';
+            }
+        
+
+apTplListingAfterStats
+
+            global $config;
+            if ( $config['rating_module'] )
+            {
+                $GLOBALS['rlSmarty'] -> display(RL_ROOT . 'plugins' . RL_DS . 'rating' . RL_DS .'admin'. RL_DS . 'listing_details.tpl');
+            }
+        
+
+apTplHeader
+
+            echo '<link href="'.RL_PLUGINS_URL.'rating/static/admin_style.css" type="text/css" rel="stylesheet" />';
+        
+

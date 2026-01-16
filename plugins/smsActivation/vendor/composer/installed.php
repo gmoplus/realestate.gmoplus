@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '4e69f32f3125cf3962e54bf94fb60eae17a3cc76',
+        'name' => '__root__',
+        'dev' => true,
+    ),
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '4e69f32f3125cf3962e54bf94fb60eae17a3cc76',
+            'dev_requirement' => false,
+        ),
+        'arcturial/clickatell' => array(
+            'pretty_version' => '3.0.0',
+            'version' => '3.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../arcturial/clickatell',
+            'aliases' => array(),
+            'reference' => '541ab55c3a807374fe727aad57004c09887080cf',
+            'dev_requirement' => false,
+        ),
+        'symfony/filesystem' => array(
+            'pretty_version' => 'v3.3.6',
+            'version' => '3.3.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/filesystem',
+            'aliases' => array(),
+            'reference' => '427987eb4eed764c3b6e38d52a0f87989e010676',
+            'dev_requirement' => false,
+        ),
+    ),
+);

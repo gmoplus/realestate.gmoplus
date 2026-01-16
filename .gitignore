@@ -1,0 +1,8 @@
+*.zip
+*.tar.gz
+*.sql
+*.log
+error_log
+tmp/
+includes/config.inc.php.bak
+plugins/wordpressBridge/

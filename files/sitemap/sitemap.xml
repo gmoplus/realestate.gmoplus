@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<sitemapindex xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+<sitemap>
+	<loc>https://realestate.gmoplus.com/files/sitemap/sitemap_pages1.xml</loc>
+	<lastmod>2026-01-08T04:21:01+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://realestate.gmoplus.com/files/sitemap/sitemap_categories1.xml</loc>
+	<lastmod>2026-01-08T04:21:01+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://realestate.gmoplus.com/files/sitemap/sitemap_accounts1.xml</loc>
+	<lastmod>2026-01-08T04:21:01+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://realestate.gmoplus.com/files/sitemap/sitemap_news1.xml</loc>
+	<lastmod>2026-01-08T04:21:01+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://realestate.gmoplus.com/files/sitemap/sitemap_plugins1.xml</loc>
+	<lastmod>2026-01-08T04:21:01+00:00</lastmod>
+</sitemap>
+</sitemapindex>

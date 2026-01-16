@@ -1,0 +1,89 @@
+listingDetailsAfterStats
+
+            global $reefless, $page_info, $listing_data, $listing_id;
+			if ( $page_info['Controller'] == 'listing_details' )
+			{
+			    $user_dir = RL_FILES.'qrcode'.RL_DS.'user_'.$listing_data['Account_ID'];
+                if(!is_dir($user_dir)){
+                    $reefless->rlMkdir($user_dir);
+                }
+                if(!file_exists($user_dir . RL_DS . 'listing_' . $listing_id . '.png')){
+                    $reefless -> loadClass('QrCode', false, 'qrCode');
+                    $GLOBALS['rlQrCode'] -> generateQR_Code((int)$listing_id);
+                }
+                $GLOBALS['rlSmarty'] -> display(RL_ROOT .'plugins'. RL_DS .'qrCode'. RL_DS .'qrCode.tpl');
+			}
+		
+
+apPhpListingsAfterAdd
+
+            global $reefless, $listing_id;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> generateQR_Code((int)$listing_id);
+		
+
+apPhpListingsAfterEdit
+
+            global $reefless, $listing_id;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> generateQR_Code((int)$listing_id);
+		
+
+apPhpAccountsAfterEdit
+
+            global $reefless, $account_id;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> remove_QR_ByUserID((int)$profile_info['ID']);
+		
+
+afterListingCreate
+
+            global $reefless, $listing_id;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> generateQR_Code((int)$listing_id);
+		
+
+afterListingEdit
+
+            global $reefless, $listing_id;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> generateQR_Code((int)$listing_id);
+		
+
+profileController
+
+            global $reefless, $profile_info;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> remove_QR_ByUserID((int)$profile_info['ID']);
+		
+
+phpListingsAjaxDeleteListing
+
+            global $reefless;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $account_id = $GLOBALS['rlDb'] -> getOne("Account_ID", "`ID` = '{$param1['ID']}'", "listings");
+            $GLOBALS['rlQrCode'] -> remove_QR_ByListing($account_id, $param1['ID']);
+		
+
+apPhpListingsAjaxDeleteListing
+
+            //deprecated in 4.5
+            global $reefless, $listing;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> remove_QR_ByListing((int)$listing['Account_ID'], (int)$listing['ID']);
+		
+
+phpDeleteListingData
+
+            global $reefless;
+            $account_id = $GLOBALS['rlDb'] -> getOne("Account_ID", "`ID` = '{$param1}'", "listings");
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> remove_QR_ByListing($account_id, $param1);
+        
+
+apMixConfigItem
+
+            $GLOBALS['reefless']->loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode']->hookApMixConfigItem($param1);
+        
+

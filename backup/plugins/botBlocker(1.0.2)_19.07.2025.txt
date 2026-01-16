@@ -1,0 +1,15 @@
+init
+
+
+boot
+Sogou,msnbot,daum.net,grapeshot,baidu,qwant,BLEXBot,DotBot,AhrefsBot,SemrushBot,mj12bot,trendictionbot,worldping-api,magpie-crawler,magpie-crawler,CCBot,Bytespider,Amazonbot,ClaudeBot,gptbot,facebookexternalhit,meta-externalagent,Barkrowler,DataForSeoBot
+
+apPhpConfigBeforeUpdate
+
+
+apPhpConfigBottom
+
+
+apTplContentBottom
+
+
