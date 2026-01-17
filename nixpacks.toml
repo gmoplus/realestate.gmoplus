@@ -1,13 +1,14 @@
 [phases.setup]
-nixPkgs = ["php83", "php83Extensions.mbstring", "php83Extensions.gd", "php83Extensions.pdo", "php83Extensions.pdo_mysql", "php83Extensions.mysqli", "php83Extensions.zip", "php83Extensions.curl", "php83Extensions.xml", "php83Extensions.bcmath", "php83Extensions.intl", "mariadb-client"]
+nixPkgs = ["php83", "php83Extensions.mbstring", "php83Extensions.gd", "php83Extensions.pdo", "php83Extensions.pdo_mysql", "php83Extensions.mysqli", "php83Extensions.zip", "php83Extensions.curl", "php83Extensions.xml", "php83Extensions.bcmath", "php83Extensions.intl", "mariadb-client", "apacheHttpd"]
 
 [phases.build]
 cmds = [
     "mkdir -p tmp/compile tmp/cache tmp/upload files plugins",
     "chmod -R 777 tmp",
     "chmod -R 777 files",
-    "chmod -R 777 plugins"
+    "chmod -R 777 plugins",
+    "mkdir -p /var/run/apache2 /var/lock/apache2 /var/log/apache2"
 ]
 
 [start]
-cmd = "rm -rf tmp/compile/* && chmod -R 777 tmp && php -S 0.0.0.0:80"
+cmd = "rm -f /app/tmp/compile/*.php && httpd -D FOREGROUND"
