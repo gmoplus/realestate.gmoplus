@@ -3,6 +3,10 @@
 *.sql
 *.log
 error_log
-tmp/
+tmp/*
+!tmp/.gitkeep
+!tmp/compile/.gitkeep
+!tmp/cache/.gitkeep
+!tmp/upload/.gitkeep
 includes/config.inc.php.bak
 plugins/wordpressBridge/
