@@ -61,8 +61,10 @@ define('RL_FILES', RL_ROOT . 'files' . RL_DS);
 define('RL_PLUGINS', RL_ROOT . 'plugins' . RL_DS);
 define('RL_CACHE', RL_TMP . 'cache_1893581862' . RL_DS);
 
-// system URLs
-define('RL_URL_HOME', getenv('APP_URL') ?: getenv('SITE_URL') ?: 'https://realestate.gmoplus.com/');
+// system URLs - trailing slash garantisi
+$app_url = getenv('APP_URL') ?: getenv('SITE_URL') ?: 'https://realestate.gmoplus.com';
+$app_url = rtrim($app_url, '/') . '/'; // Her zaman trailing slash olsun
+define('RL_URL_HOME', $app_url);
 define('RL_FILES_URL', RL_URL_HOME . 'files/');
 define('RL_LIBS_URL', RL_URL_HOME . 'libs/');
 define('RL_PLUGINS_URL', RL_URL_HOME . 'plugins/');

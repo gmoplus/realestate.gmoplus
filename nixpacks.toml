@@ -1,5 +1,5 @@
 # Flynax Real Estate - Coolify/Nixpacks Configuration
-# PHP Built-in Server kullanarak çalışır (en güvenilir yöntem)
+# PHP Built-in Server kullanarak çalışır
 
 [phases.setup]
 nixPkgs = [
@@ -20,10 +20,19 @@ nixPkgs = [
 
 [phases.build]
 cmds = [
-    "mkdir -p tmp/compile tmp/cache tmp/upload files plugins",
+    # Tüm gerekli dizinleri oluştur
+    "mkdir -p tmp/compile tmp/aCompile tmp/cache tmp/cache_1893581862 tmp/upload tmp/errorLog files plugins",
+    
+    # İzinleri ayarla
     "chmod -R 777 tmp files plugins",
-    "rm -f tmp/compile/*.php"
+    
+    # Eski compile dosyalarını temizle
+    "rm -f tmp/compile/*.php tmp/aCompile/*.php",
+    
+    # .htaccess ve index.html dosyalarını oluştur (güvenlik)
+    "touch tmp/.htaccess tmp/index.html",
+    "echo 'deny from all' > tmp/.htaccess"
 ]
 
 [start]
-cmd = "php -S 0.0.0.0:${PORT:-80} -t /app /app/router.php"
+cmd = "rm -f /app/tmp/compile/*.php /app/tmp/aCompile/*.php && php -S 0.0.0.0:${PORT:-80} -t /app /app/router.php"
