@@ -1,12 +1,14 @@
-*.zip
-*.tar.gz
-*.sql
+# Git ignore for Flynax
+/tmp/compile/*
+/tmp/cache/*
+/tmp/upload/*
+!/tmp/.gitkeep
 *.log
 error_log
-tmp/*
-!tmp/.gitkeep
-!tmp/compile/.gitkeep
-!tmp/cache/.gitkeep
-!tmp/upload/.gitkeep
-includes/config.inc.php.bak
-plugins/wordpressBridge/
+.env
+.env.local
+*.sql
+*.sql.gz
+node_modules/
+.DS_Store
+Thumbs.db

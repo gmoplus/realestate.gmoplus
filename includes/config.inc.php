@@ -1,6 +1,25 @@
 <?php
 
 /******************************************************************************
+ * COOLIFY/DOCKER SSL & SESSION FIX
+ * Bu kod Traefik reverse proxy arkasında HTTPS algılaması için gereklidir
+ ******************************************************************************/
+
+// Session dizinini /tmp olarak ayarla (container içinde yazılabilir)
+ini_set('session.save_path', '/tmp');
+
+// Traefik/Cloudflare proxy arkasında HTTPS algılama
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+    $_SERVER['SERVER_PORT'] = 443;
+}
+
+// Alternatif header kontrolü
+if (isset($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] === 'on') {
+    $_SERVER['HTTPS'] = 'on';
+}
+
+/******************************************************************************
  *
  *  PROJECT: Flynax Classifieds Software
  *  VERSION: 4.9.3
